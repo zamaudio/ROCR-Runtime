@@ -5,7 +5,9 @@ srcs = [ 'amd_elf_image.cpp',
 	 'amd_hsa_code.cpp',
 ]
 
-amdhsacode = shared_library('amdhsacode',
-  sources: srcs, link_args : lflag,
+deps = dependency('libelf')
+
+libamdhsacode = shared_library('amdhsacode',
+  sources: srcs,
   include_directories : inc,
   dependencies : deps)

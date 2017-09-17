@@ -12,25 +12,27 @@ args = [ '-D__linux__',
 ]
 add_global_arguments(args, language : 'cpp')
 
-deps = dependency('libelf')
-inc = include_directories(['.', 'inc'])
+inc = include_directories(['.', 'inc', 'core/inc', 'libamdhsacode'])
 
 subdir('inc')
 subdir('core')
-subdir('loader')
+#subdir('loader')
 subdir('libamdhsacode')
 
 srcs = ['core/util/lnx/os_linux.cpp',
 	'core/util/small_heap.cpp',
-	'core/util/timer.cpp'
+	'core/util/timer.cpp',
+
+	'loader/executable.cpp',
+	'loader/loaders.cpp'
 ]
 
-lwith = [ hsaloader, hsaruntime, amdhsacode ]
+#lwith = [ libamdhsacode, amdhsaloader, hsaruntime ]
+lwith = [ libamdhsacode, hsaruntime ]
 
 amdhsaruntime = shared_module('hsa-runtime',
   sources: srcs,
-  link_args : [vflag, lflag],
+#  link_args : [vflag, lflag],
   include_directories : inc,
   link_with : lwith,
-  dependencies : deps,
   install : true)
