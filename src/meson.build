@@ -24,10 +24,13 @@ srcs = [ 'loader/executable.cpp', 'loader/loaders.cpp' ]
 #lwith = [ amdhsaloader, libamdhsacode, amdhsaruntime, amdhsautil ]
 lwith = [ libamdhsacode, amdhsaruntime, amdhsautil ]
 
+hsakmt_dep = dependency('hsakmt')
+
 shared_module('hsa-runtime',
   sources: srcs, include_directories : inc,
 #  link_args : [vflag, lflag],
   link_args : vflag,
   link_depends : [verfile, linkfile],
   link_with : lwith,
+  dependencies : hsakmt_dep,
   install : true)
