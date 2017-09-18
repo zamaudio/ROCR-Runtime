@@ -21,6 +21,6 @@ srcs = [ 'amd_blit_kernel.cpp'
 	,'cache.cpp'
 ]
 
-hsaruntime = shared_module('amdhsaruntime',
+amdhsaruntime = shared_module('amdhsaruntime',
   sources: srcs,
   include_directories : inc)
