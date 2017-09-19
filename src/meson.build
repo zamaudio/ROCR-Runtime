@@ -9,6 +9,7 @@ args = [ '-D__linux__',
 	 '-DHSA_EXPORT_FINALIZER=1',
 	 '-DHSA_EXPORT_IMAGES=1',
 	 '-D HSA_DEPRECATED=',
+	 '-DROCR_BUILD_ID="xxx"',
 ]
 add_global_arguments(args, language : 'cpp')
 
